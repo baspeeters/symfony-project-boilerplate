@@ -1,0 +1,17 @@
+# api/config/schema.yaml
+# The list of types and properties we want to use
+namespaces:
+  entity: App\Schema\Entity
+  enum: App\Schema\Enum
+  interface: App\Schema\Model
+fieldVisibility: "protected"
+annotationGenerators:
+  - ApiPlatform\SchemaGenerator\AnnotationGenerator\PhpDocAnnotationGenerator
+  - ApiPlatform\SchemaGenerator\AnnotationGenerator\DoctrineOrmAnnotationGenerator
+  - ApiPlatform\SchemaGenerator\AnnotationGenerator\ConstraintAnnotationGenerator
+  - ApiPlatform\SchemaGenerator\AnnotationGenerator\SerializerGroupsAnnotationGenerator
+types:
+  Thing:
+    abstract: true
+    properties:
+      name: ~
