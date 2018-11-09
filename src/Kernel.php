@@ -20,6 +20,7 @@ class Kernel extends BaseKernel
         return $this->getProjectDir().'/var/cache/'.$this->environment;
     }
 
+    /** @codeCoverageIgnore */
     public function getLogDir()
     {
         return $this->getProjectDir().'/var/log';
@@ -35,6 +36,7 @@ class Kernel extends BaseKernel
         }
     }
 
+    /** @codeCoverageIgnore */
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
     {
         $container->addResource(new FileResource($this->getProjectDir().'/config/bundles.php'));
@@ -50,6 +52,7 @@ class Kernel extends BaseKernel
         $loader->load($confDir.'/{services}_'.$this->environment.self::CONFIG_EXTS, 'glob');
     }
 
+    /** @codeCoverageIgnore */
     protected function configureRoutes(RouteCollectionBuilder $routes)
     {
         $confDir = $this->getProjectDir().'/config';

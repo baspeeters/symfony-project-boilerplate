@@ -8,15 +8,21 @@
         "doctrine/doctrine-bundle": "^1.9",
         "doctrine/doctrine-orm-module": "^2.1",
         "doctrine/orm": "^2.6",
-        "symfony/console": "*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "*",
         "symfony/yaml": "*"
     },
     "require-dev": {
         "api-platform/schema-generator": "^2.1",
+        "phpstan/phpstan": "^0.10.5",
+        "phpstan/phpstan-doctrine": "^0.10.0",
+        "phpstan/phpstan-phpunit": "^0.10.0",
+        "phpstan/phpstan-symfony": "^0.10.2",
+        "phpunit/php-code-coverage": "^6.1",
+        "symfony/console": "*",
         "symfony/dotenv": "*",
         "symfony/phpunit-bridge": "*",
+        "symfony/test-pack": "^1.0",
         "symfony/web-server-bundle": "*"
     },
     "config": {
