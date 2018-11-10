@@ -2,10 +2,12 @@
 
 namespace App;
 
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 
@@ -26,12 +28,24 @@ class Kernel extends BaseKernel
         return $this->getProjectDir().'/var/log';
     }
 
+
+    /**
+     * @codeCoverageIgnore
+     * @return \Generator|iterable|\Symfony\Component\HttpKernel\Bundle\BundleInterface[]
+     * @throws Exception
+     */
     public function registerBundles()
     {
         $contents = require $this->getProjectDir().'/config/bundles.php';
         foreach ($contents as $class => $envs) {
             if (isset($envs['all']) || isset($envs[$this->environment])) {
-                yield new $class();
+                $newClass = new $class();
+
+                if ($newClass instanceof BundleInterface === false) {
+                    throw new Exception(sprintf('Class %s is not of type %s', $class, BundleInterface::class));
+                }
+
+                yield $newClass;
             }
         }
     }
