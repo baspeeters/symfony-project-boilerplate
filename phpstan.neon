@@ -7,4 +7,4 @@ parameters:
 	autoload_files:
 		- ./vendor/bin/.phpunit/phpunit-7.4/vendor/autoload.php
 	symfony:
-		container_xml_path: %rootDir%/../../../var/cache/dev/srcDevDebugProjectContainer.xml
+		container_xml_path: %rootDir%/../../../var/cache/dev/srcApp_KernelDevDebugContainer.xml
