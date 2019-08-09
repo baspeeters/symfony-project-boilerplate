@@ -5,12 +5,12 @@ php:
 matrix:
   fast_finish: true
   allow_failures:
-  - php: nightly
+    - php: "7.4snapshot"
   include:
-  - php: "7.1"
-  - php: "7.2"
-    env: COVERAGE=1
-  - php: "nightly"
+    - php: "7.3"
+    - php: "7.3"
+      env: COVERAGE=1
+    - php: "7.4snapshot"
 
 install:
   - composer install
@@ -19,4 +19,4 @@ script:
   - ./test-runner.sh
 
 after_success:
- - if [[ ${COVERAGE} == 1 ]]; then travis_retry ./vendor/bin/php-coveralls -v; fi;
+  - if [[ ${COVERAGE} == 1 ]]; then travis_retry ./vendor/bin/php-coveralls -v; fi;
